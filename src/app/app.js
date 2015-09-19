@@ -7,6 +7,9 @@ angular.module('SteroidsApp', [
 
 .config(function(calendarConfigProvider) {
 
+    console.log(calendarConfigProvider);
+
+
     calendarConfigProvider.setDateFormats({
         hour: 'HH:mm' // this will configure times on the day view to display in 24 hour format rather than the default of 12 hour
     });
@@ -41,24 +44,24 @@ angular.module('SteroidsApp', [
         {
             title: 'An event',
             type: 'warning',
-            startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-            // draggable: true,
-            // resizable: true
-        }, {
+            startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate()
+        },
+        {
             title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
             type: 'info',
-            startsAt: moment().subtract(1, 'day').toDate(),
-            // draggable: true,
-            // resizable: true
-        }, {
+            startsAt: moment().subtract(1, 'day').toDate()
+        },
+        {
             title: 'This is a really long event title that occurs on every year',
             type: 'important',
-            startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-            recursOn: 'year',
-            // draggable: true,
-            // resizable: true
+            startsAt: moment().startOf('day').add(7, 'hours').toDate()
         }
     ];
+
+    // supersonic.data.model('events').findAll().then(function(events) {
+    //     console.log(events);
+    // })
+
 
 
 });
