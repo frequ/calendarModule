@@ -1,0 +1,52 @@
+<html>
+<head>
+    <link rel="stylesheet" href="components/supersonic/css/supersonic.css" />
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" />
+    <link rel="import" href="components/supersonic/components/import.html">
+
+    <script type="text/javascript">
+    window.cordova = window.parent.cordova
+    </script>
+
+    <script src="components/angular/angular.min.js"></script>
+    <script src="components/steroids-js/steroids.js"></script>
+    <script src="components/supersonic/supersonic.js"></script>
+    <script src="components/webcomponentsjs/webcomponents.js"></script>
+
+    <script src="components/moment/min/moment.min.js"></script>
+    <script src="components/angular-touch/angular-touch.min.js"></script>
+    <script src="components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <style>
+    /* #container keeps element's margins from overflowing
+    * and causing mis-resizing of modules in apps.
+    * Please don't remove #container!
+    */
+    #container {
+        overflow: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    </style>
+</head>
+
+<body ng-app="SteroidsApp">
+    <!-- Don't remove this #container -->
+    <div id="container" ng-controller="AppCtrl as cal">
+        <!-- - - Edit body below this line - - -->
+
+        <mwl-calendar
+            view="cal.calendarView"
+            current-day="cal.calendarDay"
+            events="cal.events">
+        </mwl-calendar>
+
+            <!-- - - Edit body above this line - - -->
+        </div>
+    </body>
+    </html>
