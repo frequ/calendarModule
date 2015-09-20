@@ -1,7 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="components/supersonic/css/supersonic.css" />
-    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app/calendar.css" />
     <link rel="import" href="components/supersonic/components/import.html">
 
     <script type="text/javascript">
@@ -19,7 +19,7 @@
     <script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
     <script src="app/app.js"></script>
-    <link rel="stylesheet" href="components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" />
+    <script src="app/calendar.js"></script>
 
     <style>
     /* #container keeps element's margins from overflowing
@@ -34,15 +34,6 @@
 
     }
 
-    i.event-glyphicon {
-        color: #fff;
-    }
-    i.event-glyphicon:hover {
-        color: #00b5ff;
-    }
-
-
-
     </style>
 </head>
 
@@ -51,25 +42,18 @@
     <div id="container" ng-controller="AppCtrl as cal">
         <!-- - - Edit body below this line - - -->
 
-        <div class="button-bar">
+        <calendar
+            selected="day"
+            days="days">
+        </calendar>
 
-            <a class="button button-stable icon-left super-chevron-left" mwl-date-modifier date="cal.calendarDay" decrement="cal.calendarView">Prev</a>
-            <a class="button button-positive" mwl-date-modifier date="cal.calendarDay" set-to-today>Today</a>
-            <a class="button button-stable icon-right super-chevron-right" mwl-date-modifier date="cal.calendarDay" increment="cal.calendarView">Next</a>
-
+        <div class="list">
+            <div class="item item-divider">
+                {{ day.format('dddd, MMMM Do YYYY') }}
+            </div>
+            <div ng-show="!events.length" class="item">No events</div>
+            <div ng-show="eventss.length" class="item" ng-repeat="event in events">{{event.title}}</div>
         </div>
-
-        <br/>
-
-        <mwl-calendar
-            view="cal.calendarView"
-            current-day="cal.calendarDay"
-            events="cal.events"
-            auto-open="true"
-            edit-event-html="'<i class=\'glyphicon event-glyphicon glyphicon-pencil\'></i>'"
-            delete-event-html="'<i class=\'glyphicon event-glyphicon glyphicon-remove\'></i>'"
-            >
-        </mwl-calendar>
 
             <!-- - - Edit body above this line - - -->
         </div>
