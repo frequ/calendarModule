@@ -4,9 +4,6 @@
   "private": true,
   "dependencies": {
     "angular": "~1.4.6",
-    "angular-bootstrap": "~0.13.4",
-    "angular-bootstrap-calendar": "~0.15.0",
-    "angular-touch": "~1.4.6",
     "handlebars": "~3.0.3",
     "momentjs": "2.10.2",
     "supersonic": "1.x"
