@@ -1,0 +1,77 @@
+calendar{
+    width: 100%;
+    border: 1px solid #ccc;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+div{
+    display: block;
+}
+
+.header{
+    width: 100%;
+    background-color: #00b5ff;
+    height: 40px;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+}
+
+.header span{
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.header i:first-child{
+    float:left;
+    padding: 12px;
+}
+
+.header i:last-child{
+    float: right;
+    padding: 12px;
+}
+
+
+.week{
+    float: left;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    height: 40px;
+}
+
+.week span{
+    height: 40px;
+    line-height: 40px;
+    border-left: 1px solid #ccc;
+    width: 14.28571%;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.days span{
+    font-weight: bold;
+    color: #00b5ff;
+}
+
+.week span:first-child{
+    border-left: none;
+}
+
+span.day.different-month{
+    color: #C0C0C0;
+}
+
+span.day.selected{
+    background-color: #00b5ff;
+    color: #fff;
+}
+
+/* hasEvents */
+span.day.hasEvents:after{
+    content: '\2022';
+    color: red;
+}
