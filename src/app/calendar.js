@@ -24,9 +24,8 @@ angular.module('SteroidsApp')
                 buildMonth(scope, start, scope.month, scope.events);
             });
 
-            //TODO events class
             //TODO today button
-
+            //TODO maybe implement events in template with badges
 
             scope.select = function(day) {
                 scope.selected = day.date;
@@ -36,14 +35,14 @@ angular.module('SteroidsApp')
                 var next = scope.month.clone();
                 removeTime(next.month(next.month()+1).date(0));
                 scope.month.month(scope.month.month()+1);
-                buildMonth(scope, next, scope.month);
+                buildMonth(scope, next, scope.month, scope.events);
             };
 
             scope.previous = function() {
                 var previous = scope.month.clone();
                 removeTime(previous.month(previous.month()-1).date(0));
                 scope.month.month(scope.month.month()-1);
-                buildMonth(scope, previous, scope.month);
+                buildMonth(scope, previous, scope.month, scope.events);
             };
 
             function buildMonth(scope, start, month, events) {
@@ -60,7 +59,7 @@ angular.module('SteroidsApp')
 
             function hasEvents(date, events) {
 
-                if( events.length > 0 ) {
+                if( events && events.length > 0 ) {
                     for(var i = 0; i < events.length; i++) {
                         if (date.isSame(events[i].date, "day")) {
                             return events[i].type;
@@ -83,8 +82,6 @@ angular.module('SteroidsApp')
                         hasEvents: hasEvents(date, events),
                         date: date
                     });
-
-
                     date = date.clone();
                     date.add(1, "d");
                 }

@@ -10,7 +10,6 @@ angular.module('SteroidsApp', [
 
     supersonic.data.model('events').findAll().then(function(events) {
         $scope.$apply(function() {
-            console.log(events.toJson());
             $scope.events = events.toJson();
         });
 
