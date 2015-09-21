@@ -52,6 +52,7 @@
                 {{ day.format('dddd, MMMM Do YYYY') }}
             </div>
             <div ng-show="!events.length" class="item">No events</div>
+            <!-- TODO: filter events for selected day -->
             <div ng-show="eventss.length" class="item" ng-repeat="event in events">{{event.title}}</div>
         </div>
 

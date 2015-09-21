@@ -14,9 +14,8 @@ angular.module('SteroidsApp')
             scope.month = scope.selected.clone();
 
             var start = scope.selected.clone();
-            start.date(1);
+            start.date(0);
             removeTime(start.day(0));
-
             buildMonth(scope, start, scope.month);
 
             //TODO events class
@@ -25,19 +24,19 @@ angular.module('SteroidsApp')
 
             scope.select = function(day) {
                 scope.selected = day.date;
-                console.log(scope.selected);
+
             };
 
             scope.next = function() {
                 var next = scope.month.clone();
-                removeTime(next.month(next.month()+1).date(1));
+                removeTime(next.month(next.month()+1).date(0));
                 scope.month.month(scope.month.month()+1);
                 buildMonth(scope, next, scope.month);
             };
 
             scope.previous = function() {
                 var previous = scope.month.clone();
-                removeTime(previous.month(previous.month()-1).date(1));
+                removeTime(previous.month(previous.month()-1).date(0));
                 scope.month.month(scope.month.month()-1);
                 buildMonth(scope, previous, scope.month);
             };
@@ -70,7 +69,7 @@ angular.module('SteroidsApp')
             }
 
             function removeTime(date) {
-                return date.day(0).hour(0).minute(0).second(0).millisecond(0);
+                return date.day(1).hour(0).minute(0).second(0).millisecond(0);
             }
 
 
