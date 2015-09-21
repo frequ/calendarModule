@@ -1,0 +1,110 @@
+//out: calendar.css
+
+@borderColor: #ccc;
+@agCyan: #00b5ff;
+@grayedOut: #C0C0C0;
+@important: #cc2311;
+@info: #145fd7;
+@balanced: #498f24;
+@royal: #552bdf;
+
+calendar{
+    width: 100%;
+    border: 1px solid @borderColor;
+    display: inline-block;
+    margin-bottom: 10px;
+
+    .header{
+        width: 100%;
+        background-color: @agCyan;
+        height: 40px;
+        color: white;
+        line-height: 40px;
+        text-align: center;
+
+        span{
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        i{
+            padding: 12px;
+            cursor: pointer;
+        }
+        i:first-child{
+            float: left;
+        }
+        i:last-child{
+            float: right;
+        }
+    }
+
+    .week{
+        width: 100%;
+        border-top: 1px solid @borderColor;
+        height: 40px;
+
+        span{
+            height: 40px;
+            line-height: 40px;
+            border-left: 1px solid @borderColor;
+            width: 14.28571%;
+            text-align: center;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        span:first-child {
+            border-left: none;
+        }
+
+        .days span{
+            font-weight: bold;
+            color: #00b5ff;
+        }
+
+
+        .different-month{
+            color: @grayedOut;
+        }
+        .selected{
+            background-color: @agCyan;
+            color: #ffffff;
+        }
+        .has-events:after{
+            content: '\2022';
+            color: #000;
+        }
+
+        .important:after{
+            color: @important;
+        }
+        .info:after{
+            color: @info;
+        }
+        .balanced:after{
+            color: @balanced;
+        }
+        .royal:after{
+            color: @royal;
+        }
+
+
+    }
+}
+
+.list{
+    .important{
+        color: @important;
+    }
+    .info{
+        color: @info;
+    }
+    .balanced{
+        color: @balanced;
+    }
+    .royal{
+        color: @royal;
+    }
+}
