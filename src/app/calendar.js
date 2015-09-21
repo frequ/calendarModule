@@ -5,7 +5,8 @@ angular.module('SteroidsApp')
         templateUrl: 'app/calendarTmpl.html',
         scope: {
             selected: '=',
-            days: '='
+            days: '=',
+            events: '='
         },
 
         link: function(scope) {
@@ -16,7 +17,12 @@ angular.module('SteroidsApp')
             var start = scope.selected.clone();
             start.date(0);
             removeTime(start.day(0));
-            buildMonth(scope, start, scope.month);
+            buildMonth(scope, start, scope.month, scope.events);
+
+
+            scope.$watch("events", function(newVal, oldVal) {
+                buildMonth(scope, start, scope.month, scope.events);
+            });
 
             //TODO events class
             //TODO today button
@@ -24,7 +30,6 @@ angular.module('SteroidsApp')
 
             scope.select = function(day) {
                 scope.selected = day.date;
-
             };
 
             scope.next = function() {
@@ -41,27 +46,45 @@ angular.module('SteroidsApp')
                 buildMonth(scope, previous, scope.month);
             };
 
-            function buildMonth(scope, start, month) {
+            function buildMonth(scope, start, month, events) {
+
                 scope.weeks = [];
                 var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
                 while (!done) {
-                    scope.weeks.push({ days: buildWeek(date.clone(), month) });
+                    scope.weeks.push({ days: buildWeek(date.clone(), month, events) });
                     date.add(1, "w");
                     done = count++ > 2 && monthIndex !== date.month();
                     monthIndex = date.month();
                 }
             }
 
-            function buildWeek(date, month) {
+            function hasEvents(date, events) {
+
+                if( events.length > 0 ) {
+                    for(var i = 0; i < events.length; i++) {
+                        if (date.isSame(events[i].date, "day")) {
+                            return events[i].type;
+                        }
+                    }
+                }
+                return false;
+            }
+
+            function buildWeek(date, month, events) {
+
                 var days = [];
                 for (var i = 0; i < 7; i++) {
+
                     days.push({
                         name: date.format("dd").substring(0, 1),
                         number: date.date(),
                         isCurrentMonth: date.month() === month.month(),
                         isToday: date.isSame(new Date(), "day"),
+                        hasEvents: hasEvents(date, events),
                         date: date
                     });
+
+
                     date = date.clone();
                     date.add(1, "d");
                 }

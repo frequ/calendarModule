@@ -44,16 +44,18 @@
 
         <calendar
             selected="day"
-            days="days">
+            days="days"
+            events="events">
         </calendar>
 
         <div class="list">
             <div class="item item-divider">
                 {{ day.format('dddd, MMMM Do YYYY') }}
             </div>
-            <div ng-show="!events.length" class="item">No events</div>
-            <!-- TODO: filter events for selected day -->
-            <div ng-show="eventss.length" class="item" ng-repeat="event in events">{{event.title}}</div>
+            <div ng-show="!filteredEvents.length" class="item">No events</div>
+            <div ng-show="filteredEvents.length" class="item" ng-repeat="event in filteredEvents = (events | dateFilter:day)">
+                {{ event.title }}
+            </div>
         </div>
 
             <!-- - - Edit body above this line - - -->

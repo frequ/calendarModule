@@ -71,7 +71,19 @@ span.day.selected{
 }
 
 /* hasEvents */
-span.day.hasEvents:after{
+span.day.has-events:after{
     content: '\2022';
-    color: red;
+    color: black; /* default */
+}
+span.day.has-events.important:after{
+    color: #cc2311;
+}
+span.day.has-events.info:after{
+    color: #145fd7;
+}
+span.day.has-events.balanced:after{
+    color: #498f24;
+}
+span.day.has-events.royal:after{
+    color: #552bdf;
 }
